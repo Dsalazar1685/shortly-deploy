@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <title>Shortly</title>
-    <% if (production) { %>
+    <% if (process.env.NODE_ENV === 'production') { %>
       <link rel="stylesheet" type="text/css" href="/dist/min.css">
       <script src="/dist/min.js"></script>
     <% } else { %>

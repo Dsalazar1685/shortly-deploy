@@ -78,6 +78,18 @@ module.exports = function(grunt) {
         command: 'git push live master'
       }
     },
+
+    env: {
+      options: {
+
+      },
+      dev: {
+        NODE_ENV: 'production',
+        DEST: 'public/dist'
+      },
+
+    }
+
   });
 
   grunt.loadNpmTasks('grunt-contrib-uglify');
@@ -88,6 +100,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-mocha-test');
   grunt.loadNpmTasks('grunt-shell');
   grunt.loadNpmTasks('grunt-nodemon');
+  grunt.loadNpmTasks('grunt-env');
 
   grunt.registerTask('server-dev', function (target) {
     grunt.task.run([ 'nodemon', 'watch' ]);
@@ -115,7 +128,7 @@ module.exports = function(grunt) {
   });
 
   grunt.registerTask('deploy', function (target) {
-    grunt.task.run([ 'test', 'build', 'nodemon'])
+    grunt.task.run([ 'test', 'build', 'env', 'nodemon'])
 
   });
 
